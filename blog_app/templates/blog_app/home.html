@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2 class="text-center my-4">Latest Posts</h2>
+
+<div class="container">
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-3 mb-4">
+
+            <div class="card post-card">
+
+                <img src="{{ post.image.url }}" class="card-img-top" alt="post image">
+
+                <div class="card-body">
+                    <h6 class="card-title">{{ post.title }}</h6>
+
+                    <p class="card-text">
+                        {{ post.content|truncatewords:12 }}
+                    </p>
+
+                    <a href="{% url 'post_detail' post.id %}" class="btn btn-primary btn-sm">
+                        Read More
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
