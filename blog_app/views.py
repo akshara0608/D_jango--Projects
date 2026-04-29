@@ -59,3 +59,7 @@ def post_detail(request, post_id):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+@login_required
+def profile(request):
+    return render(request, 'blog_app/profile.html')
